@@ -13,6 +13,11 @@ class CIFARModel(nn.Module):
         self.linear_layer3 = nn.Linear(10, 10)
 
     def forward(self, x):
+        x = self.convolutional_layer1(x)
+        x = F.relu(x)
+        x = self.convolutional_layer2(x)
+        x = F.relu(x)
+
         x = x.view(-1, 648)
         x = self.linear_layer1(x)
         x = F.relu(x)
